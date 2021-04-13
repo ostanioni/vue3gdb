@@ -1,5 +1,9 @@
+import { CLOSED } from "ws";
+
 const WS = {
   state: () => ({
+    socket: null,
+    readyState: CLOSED,
     socketIsActive: false,
     socketDeactivateReason: "not init",
   }),
