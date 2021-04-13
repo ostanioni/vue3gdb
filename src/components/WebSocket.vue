@@ -9,28 +9,30 @@ export default {
     }
   },
   created() {
-    this.socket = new WebSocket('ws://127.0.0.9:3019/') 
+    this.socket = new WebSocket('ws://127.0.0.9:3019/');
+    this.$store.dispatch('socket_activate');
   },
   mounted() {
     this.$nextTick(function () {
         
           this.addSocketEventListeners();
-          console.log(this.$store);
-      
+          console.log("socketIsActive = ", this.$store.state.WS.socketIsActive);
+
     });
 
   },
   methods: {
     addSocketEventListeners() {
 
-      const appEl = document.getElementById('app');
+      // const appEl = document.getElementById('app');
+
+      const sckt = this.socket;
 
       this.socket.addEventListener('open', function (event) {
-              alert(event);
-              //socket.send('Hello Server!')
+              sckt.send(`${event}Hello Server!`)
               });
       this.socket.addEventListener('message', function (event) {
-            appEl.innerText += event.data;  });
+            console.log(event.data);  });
 
     },
   }

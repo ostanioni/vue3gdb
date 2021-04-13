@@ -1,5 +1,9 @@
 <template>
-  <h1>{{ msg }}</h1>
+  <h1 
+    v-on:click="socket_deactivate"
+  >
+    {{ SocketState }}
+  </h1>
 </template>
 
 <script>
@@ -8,11 +12,25 @@ export default {
   props: {
     msg: String,
   },
+  methods: {
+    socket_deactivate() {
+      this.$store.dispatch('socket_toggle');
+      console.log("HW: ", this.$store.state.socketIsActive);
+    },
+  },
+  computed: {
+    SocketState() {
+      return this.$store.state.socketIsActive
+    } 
+  }
 };
 </script>
 
 <style scoped lang="scss">
 h1 {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
+  &:hover {
+    cursor: pointer;
+  }
 }
 </style>
