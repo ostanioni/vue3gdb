@@ -14,10 +14,10 @@ module.exports = {
         resources:   `${SRC}/resources`,
         tables:      `${SRC}/tables`,
         store:       `${SRC}/store`,
-        reducers:    `${SRC}/store/reducers`,
         themes:      `${SRC}/themes`,
-        
+
         explorer:    `${SRC}/components/explorer`,
+        svgs:        `${SRC}/components/svgs`
       }    
     }
   }
